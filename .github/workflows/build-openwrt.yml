@@ -8,8 +8,8 @@ on:
 #    types: published
 #  schedule:
 #    - cron: 0 8 * * 5
-#  watch:
-#    types: started
+  watch:
+    types: started
 #  repository_dispatch:
 
 jobs:
@@ -46,8 +46,10 @@ jobs:
         /bin/bash ${GITHUB_WORKSPACE}/before_build.sh
         cp -fpR ${GITHUB_WORKSPACE}/. /home/runner/immortalwrt/
 
+ #   - name: SSH connection to Actions
+ #     uses: csexton/debugger-action@master
     - name: SSH connection to Actions
-      uses: csexton/debugger-action@master
+      uses: P3TERX/debugger-action@master
 
     - name: Start Build
       run: | 
